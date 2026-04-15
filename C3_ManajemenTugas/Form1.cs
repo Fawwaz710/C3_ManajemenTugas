@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace C3_ManajemenTugas
 {
@@ -21,7 +22,11 @@ namespace C3_ManajemenTugas
         {
             try
             {
+                Koneksi kon = new Koneksi();
+
+                
                 SqlConnection conn = kon.GetConn();
+
                 conn.Open();
                 MessageBox.Show("Koneksi ke Database TugasDB Berhasil!");
                 conn.Close();

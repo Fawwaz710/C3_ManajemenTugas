@@ -26,3 +26,9 @@ CREATE TABLE pengumpulan (
     FOREIGN KEY (tugas_id) REFERENCES tugas(id_tugas),
     FOREIGN KEY (mahasiswa_id) REFERENCES users(user_id)
 );
+
+INSERT INTO users (nama, email, role) 
+VALUES 
+('Dosen Matematika', 'math@kampus.ac.id', 'dosen'),
+('Dosen Fisika', 'physics@kampus.ac.id', 'dosen'),
+('Dosen Bahasa Inggris', 'english@kampus.ac.id', 'dosen');

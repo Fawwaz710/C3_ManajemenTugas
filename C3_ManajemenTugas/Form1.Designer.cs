@@ -43,7 +43,7 @@
             this.btnCari = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblTotalTugas = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbDosen = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTugas)).BeginInit();
             this.SuspendLayout();
@@ -192,14 +192,21 @@
             this.lblTotalTugas.Text = "Total Tugas: 0";
             this.lblTotalTugas.Click += new System.EventHandler(this.lblTotalTugas_Click);
             // 
-            // comboBox1
+            // cmbDosen
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(116, 124);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 24);
-            this.comboBox1.TabIndex = 16;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cmbDosen.FormattingEnabled = true;
+            this.cmbDosen.Items.AddRange(new object[] {
+            "Dosen Teknik ",
+            "Dosen PDW",
+            "Dosen PABD",
+            "Dosen Routing",
+            "Dosen STQA",
+            "Dosen HCI"});
+            this.cmbDosen.Location = new System.Drawing.Point(116, 124);
+            this.cmbDosen.Name = "cmbDosen";
+            this.cmbDosen.Size = new System.Drawing.Size(121, 24);
+            this.cmbDosen.TabIndex = 16;
+            this.cmbDosen.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -216,7 +223,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbDosen);
             this.Controls.Add(this.lblTotalTugas);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnCari);
@@ -258,7 +265,7 @@
         private System.Windows.Forms.Button btnCari;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label lblTotalTugas;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbDosen;
         private System.Windows.Forms.Label label4;
     }
 }

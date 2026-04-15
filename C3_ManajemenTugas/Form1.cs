@@ -15,6 +15,7 @@ namespace C3_ManajemenTugas
     {
         Koneksi kon = new Koneksi();
         SqlConnection conn;
+
         public Form1()
         {
             InitializeComponent();
@@ -25,15 +26,10 @@ namespace C3_ManajemenTugas
         {
             try
             {
-                Koneksi kon = new Koneksi();
-
-
-                SqlConnection conn = kon.GetConn();
-
-                conn.Open();
-                MessageBox.Show("Koneksi ke Database TugasDB Berhasil!");
+                if (conn.State == ConnectionState.Closed) conn.Open();
                 conn.Close();
 
+                LoadDosen();
                 LoadDataTugas();
                 HitungTotalTugas();
             }
@@ -43,37 +39,60 @@ namespace C3_ManajemenTugas
             }
         }
 
-        void LoadDataTugas()
+        void LoadDosen()
+        {
+            try
             {
-                try
-                {
-                    if (conn.State == ConnectionState.Closed) conn.Open();
+                if (conn.State == ConnectionState.Closed) conn.Open();
+                string query = "SELECT user_id, nama FROM users WHERE role = 'dosen'";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
 
-                    // Query untuk mengambil data tugas dan nama dosennya
-                    string query = @"SELECT t.id_tugas, t.judul, t.deskripsi, t.deadline, u.nama as nama_dosen 
-                         FROM tugas t 
-                         JOIN users u ON t.dosen_id = u.user_id";
+                DataTable dt = new DataTable();
+                dt.Load(reader);
 
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    SqlDataReader reader = cmd.ExecuteReader();
+                cmbDosen.DataSource = dt;
+                cmbDosen.DisplayMember = "nama";
+                cmbDosen.ValueMember = "user_id";
 
-                    DataTable dt = new DataTable();
-                    dt.Load(reader);
-                    dgvTugas.DataSource = dt; // dgvTugas adalah nama DataGridView Anda
-
-                    reader.Close();
-                    conn.Close();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Gagal load data: " + ex.Message);
-                }
+                conn.Close();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal load dosen: " + ex.Message);
+            }
+        }
+
+        void LoadDataTugas()
+        {
+            try
+            {
+                if (conn.State == ConnectionState.Closed) conn.Open();
+                string query = @"SELECT t.id_tugas, t.judul, t.deskripsi, t.deadline, u.nama as nama_dosen 
+                                 FROM tugas t 
+                                 JOIN users u ON t.dosen_id = u.user_id";
+
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                dgvTugas.DataSource = dt;
+
+                reader.Close();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal load data: " + ex.Message);
+            }
+        }
+
         void ClearForm()
         {
             txtIDTugas.Clear();
-            txtDeskripsi.Clear();
             txtJudul.Clear();
+            txtDeskripsi.Clear();
             dtpDeadline.Value = DateTime.Now;
             txtSearch.Clear();
         }
@@ -84,8 +103,11 @@ namespace C3_ManajemenTugas
             {
                 if (conn.State == ConnectionState.Closed) conn.Open();
                 SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM tugas", conn);
-                int total = (int)cmd.ExecuteScalar();
-                lblTotalTugas.Text = "Total Tugas Tersedia: " + total.ToString();
+                object result = cmd.ExecuteScalar();
+                if (result != null)
+                {
+                    lblTotalTugas.Text = "Total Tugas Tersedia: " + result.ToString();
+                }
                 conn.Close();
             }
             catch (Exception ex)
@@ -93,39 +115,10 @@ namespace C3_ManajemenTugas
                 Console.WriteLine(ex.Message);
             }
         }
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblTotalTugas_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnTampil_Click(object sender, EventArgs e)
         {
             LoadDataTugas();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtJudul_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvTugas_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void dgvTugas_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -134,16 +127,13 @@ namespace C3_ManajemenTugas
             {
                 DataGridViewRow row = dgvTugas.Rows[e.RowIndex];
                 txtIDTugas.Text = row.Cells["id_tugas"].Value.ToString();
-                txtDeskripsi.Text = row.Cells["judul"].Value.ToString();
-                label3.Text = row.Cells["deskripsi"].Value.ToString();
+                txtJudul.Text = row.Cells["judul"].Value.ToString();
+                txtDeskripsi.Text = row.Cells["deskripsi"].Value.ToString();
+
                 if (row.Cells["deadline"].Value != DBNull.Value)
-                {
                     dtpDeadline.Value = Convert.ToDateTime(row.Cells["deadline"].Value);
-                }
-                else
-                {
-                    dtpDeadline.Value = DateTime.Now; // Beri tanggal hari ini jika di database kosong
-                }
+
+                cmbDosen.Text = row.Cells["nama_dosen"].Value.ToString();
             }
         }
 
@@ -151,32 +141,31 @@ namespace C3_ManajemenTugas
         {
             try
             {
-                // COMMIT 14: VALIDASI INPUT
-                if (string.IsNullOrEmpty(txtDeskripsi.Text) || string.IsNullOrEmpty(label3.Text))
+                if (string.IsNullOrEmpty(txtJudul.Text) || string.IsNullOrEmpty(txtDeskripsi.Text))
                 {
                     MessageBox.Show("Judul dan Deskripsi tidak boleh kosong!");
                     return;
                 }
 
                 if (conn.State == ConnectionState.Closed) conn.Open();
-            string query = "INSERT INTO tugas (judul, deskripsi, deadline, dosen_id) VALUES (@judul, @desc, @deadline, @dosenId)";
-            SqlCommand cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@judul", txtDeskripsi.Text);
-            cmd.Parameters.AddWithValue("@desc", label3.Text);
-            cmd.Parameters.AddWithValue("@deadline", dtpDeadline.Value);
-            cmd.Parameters.AddWithValue("@dosenId", 1); // Hardcode ID Dosen sementara
+                string query = "INSERT INTO tugas (judul, deskripsi, deadline, dosen_id) VALUES (@judul, @desc, @deadline, @dosenId)";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@judul", txtJudul.Text);
+                cmd.Parameters.AddWithValue("@desc", txtDeskripsi.Text);
+                cmd.Parameters.AddWithValue("@deadline", dtpDeadline.Value);
+                cmd.Parameters.AddWithValue("@dosenId", cmbDosen.SelectedValue);
 
-            cmd.ExecuteNonQuery();
-            MessageBox.Show("Tugas berhasil disimpan!");
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Tugas berhasil disimpan!");
 
-            LoadDataTugas();   // Refresh tabel
-            HitungTotalTugas(); // Refresh statistik
-            ClearForm();       // Kosongkan input
-            conn.Close();
-        }
-    catch (Exception ex) {
-        MessageBox.Show("Gagal simpan: " + ex.Message);
-    
+                LoadDataTugas();
+                HitungTotalTugas();
+                ClearForm();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal simpan: " + ex.Message);
             }
         }
 
@@ -191,11 +180,12 @@ namespace C3_ManajemenTugas
                 }
 
                 if (conn.State == ConnectionState.Closed) conn.Open();
-                string query = "UPDATE tugas SET judul=@judul, deskripsi=@desc, deadline=@deadline WHERE id_tugas=@id";
+                string query = "UPDATE tugas SET judul=@judul, deskripsi=@desc, deadline=@deadline, dosen_id=@dosenId WHERE id_tugas=@id";
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@judul", txtDeskripsi.Text);
-                cmd.Parameters.AddWithValue("@desc", label3.Text);
+                cmd.Parameters.AddWithValue("@judul", txtJudul.Text);
+                cmd.Parameters.AddWithValue("@desc", txtDeskripsi.Text);
                 cmd.Parameters.AddWithValue("@deadline", dtpDeadline.Value);
+                cmd.Parameters.AddWithValue("@dosenId", cmbDosen.SelectedValue);
                 cmd.Parameters.AddWithValue("@id", txtIDTugas.Text);
 
                 cmd.ExecuteNonQuery();
@@ -213,14 +203,12 @@ namespace C3_ManajemenTugas
         {
             if (string.IsNullOrEmpty(txtIDTugas.Text)) return;
 
-            
             DialogResult confirm = MessageBox.Show("Yakin ingin menghapus tugas ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (confirm == DialogResult.Yes)
             {
                 try
                 {
-                    
                     if (conn.State == ConnectionState.Closed) conn.Open();
                     SqlCommand cmd = new SqlCommand("DELETE FROM tugas WHERE id_tugas = @id", conn);
                     cmd.Parameters.AddWithValue("@id", txtIDTugas.Text);
@@ -239,29 +227,14 @@ namespace C3_ManajemenTugas
             }
         }
 
-        private void Deskripsi_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dtpDeadline_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnCari_Click(object sender, EventArgs e)
         {
             try
             {
                 if (conn.State == ConnectionState.Closed) conn.Open();
-
-                // Menggunakan klausa LIKE untuk mencari teks yang mengandung kata kunci
-                string query = "SELECT * FROM tugas WHERE judul LIKE @keyword";
+                string query = "SELECT t.id_tugas, t.judul, t.deskripsi, t.deadline, u.nama as nama_dosen " +
+                               "FROM tugas t JOIN users u ON t.dosen_id = u.user_id " +
+                               "WHERE t.judul LIKE @keyword";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@keyword", "%" + txtSearch.Text + "%");
 
@@ -269,7 +242,6 @@ namespace C3_ManajemenTugas
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
                 dgvTugas.DataSource = dt;
-
                 conn.Close();
             }
             catch (Exception ex)
@@ -278,31 +250,16 @@ namespace C3_ManajemenTugas
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (conn.State == ConnectionState.Closed) conn.Open();
-
-                // Ambil user yang rolenya adalah 'dosen'
-                string query = "SELECT user_id, nama FROM users WHERE role = 'dosen'";
-                SqlCommand cmd = new SqlCommand(query, conn);
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                DataTable dt = new DataTable();
-                dt.Load(reader);
-
-                cmbDosen.DataSource = dt;
-                cmbDosen.DisplayMember = "nama";    // Yang muncul di layar (Nama)
-                cmbDosen.ValueMember = "user_id";   // Yang disimpan ke database (ID)
-
-                conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Gagal load dosen: " + ex.Message);
-            }
-        }
-    }
+     
+        private void dgvTugas_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void label1_Click(object sender, EventArgs e) { }
+        private void textBox1_TextChanged(object sender, EventArgs e) { }
+        private void Deskripsi_Click(object sender, EventArgs e) { }
+        private void txtJudul_TextChanged(object sender, EventArgs e) { }
+        private void label2_Click(object sender, EventArgs e) { }
+        private void dtpDeadline_ValueChanged(object sender, EventArgs e) { }
+        private void textBox2_TextChanged(object sender, EventArgs e) { }
+        private void lblTotalTugas_Click(object sender, EventArgs e) { }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) { }
     }
 }

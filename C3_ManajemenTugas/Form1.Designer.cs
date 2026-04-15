@@ -31,7 +31,7 @@
             this.dgvTugas = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.Deskripsi = new System.Windows.Forms.Label();
+            this.txtDeskripsi = new System.Windows.Forms.Label();
             this.txtJudul = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpDeadline = new System.Windows.Forms.DateTimePicker();
@@ -49,11 +49,11 @@
             // dgvTugas
             // 
             this.dgvTugas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTugas.Location = new System.Drawing.Point(129, 288);
+            this.dgvTugas.Location = new System.Drawing.Point(40, 288);
             this.dgvTugas.Name = "dgvTugas";
             this.dgvTugas.RowHeadersWidth = 51;
             this.dgvTugas.RowTemplate.Height = 24;
-            this.dgvTugas.Size = new System.Drawing.Size(495, 150);
+            this.dgvTugas.Size = new System.Drawing.Size(710, 150);
             this.dgvTugas.TabIndex = 0;
             this.dgvTugas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTugas_CellClick);
             this.dgvTugas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTugas_CellContentClick);
@@ -76,43 +76,46 @@
             this.textBox1.TabIndex = 3;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // Deskripsi
+            // txtDeskripsi
             // 
-            this.Deskripsi.AutoSize = true;
-            this.Deskripsi.Location = new System.Drawing.Point(29, 88);
-            this.Deskripsi.Name = "Deskripsi";
-            this.Deskripsi.Size = new System.Drawing.Size(64, 16);
-            this.Deskripsi.TabIndex = 4;
-            this.Deskripsi.Text = "Deskripsi";
+            this.txtDeskripsi.AutoSize = true;
+            this.txtDeskripsi.Location = new System.Drawing.Point(12, 88);
+            this.txtDeskripsi.Name = "txtDeskripsi";
+            this.txtDeskripsi.Size = new System.Drawing.Size(64, 16);
+            this.txtDeskripsi.TabIndex = 4;
+            this.txtDeskripsi.Text = "Deskripsi";
+            this.txtDeskripsi.Click += new System.EventHandler(this.Deskripsi_Click);
             // 
             // txtJudul
             // 
-            this.txtJudul.Location = new System.Drawing.Point(116, 88);
+            this.txtJudul.Location = new System.Drawing.Point(116, 85);
             this.txtJudul.Multiline = true;
             this.txtJudul.Name = "txtJudul";
-            this.txtJudul.Size = new System.Drawing.Size(151, 59);
+            this.txtJudul.Size = new System.Drawing.Size(200, 59);
             this.txtJudul.TabIndex = 5;
             this.txtJudul.TextChanged += new System.EventHandler(this.txtJudul_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 164);
+            this.label2.Location = new System.Drawing.Point(12, 182);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 16);
             this.label2.TabIndex = 6;
             this.label2.Text = "Deadline";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // dtpDeadline
             // 
-            this.dtpDeadline.Location = new System.Drawing.Point(116, 164);
+            this.dtpDeadline.Location = new System.Drawing.Point(116, 180);
             this.dtpDeadline.Name = "dtpDeadline";
             this.dtpDeadline.Size = new System.Drawing.Size(200, 22);
             this.dtpDeadline.TabIndex = 7;
+            this.dtpDeadline.ValueChanged += new System.EventHandler(this.dtpDeadline_ValueChanged);
             // 
             // txtIDTugas
             // 
-            this.txtIDTugas.Location = new System.Drawing.Point(116, 201);
+            this.txtIDTugas.Location = new System.Drawing.Point(116, 232);
             this.txtIDTugas.Name = "txtIDTugas";
             this.txtIDTugas.Size = new System.Drawing.Size(100, 22);
             this.txtIDTugas.TabIndex = 8;
@@ -167,6 +170,7 @@
             this.btnCari.TabIndex = 13;
             this.btnCari.Text = "Cari";
             this.btnCari.UseVisualStyleBackColor = true;
+            this.btnCari.Click += new System.EventHandler(this.btnCari_Click);
             // 
             // txtSearch
             // 
@@ -202,7 +206,7 @@
             this.Controls.Add(this.dtpDeadline);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtJudul);
-            this.Controls.Add(this.Deskripsi);
+            this.Controls.Add(this.txtDeskripsi);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvTugas);
@@ -220,7 +224,7 @@
         private System.Windows.Forms.DataGridView dgvTugas;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label Deskripsi;
+        private System.Windows.Forms.Label txtDeskripsi;
         private System.Windows.Forms.TextBox txtJudul;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpDeadline;

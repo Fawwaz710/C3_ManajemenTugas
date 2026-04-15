@@ -13,10 +13,12 @@ namespace C3_ManajemenTugas
 {
     public partial class Form1 : Form
     {
-            SqlConnection conn;
+        Koneksi kon = new Koneksi();
+        SqlConnection conn;
         public Form1()
         {
             InitializeComponent();
+            conn = kon.GetConn();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -31,16 +33,14 @@ namespace C3_ManajemenTugas
                 conn.Open();
                 MessageBox.Show("Koneksi ke Database TugasDB Berhasil!");
                 conn.Close();
+
+                LoadDataTugas();
+                HitungTotalTugas();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Koneksi Gagal: " + ex.Message);
             }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            HitungTotalTugas(); 
-        }
         }
 
         void LoadDataTugas()
@@ -69,6 +69,13 @@ namespace C3_ManajemenTugas
                     MessageBox.Show("Gagal load data: " + ex.Message);
                 }
             }
+        void ClearForm()
+        {
+            txtIDTugas.Clear();
+            txtJudul.Clear();
+            txtDeskripsi.Text = string.Empty;
+            dtpDeadline.Value = DateTime.Now;
+        }
 
         void HitungTotalTugas()
         {
@@ -128,7 +135,14 @@ namespace C3_ManajemenTugas
                 txtIDTugas.Text = row.Cells["id_tugas"].Value.ToString();
                 txtJudul.Text = row.Cells["judul"].Value.ToString();
                 txtDeskripsi.Text = row.Cells["deskripsi"].Value.ToString();
-                dtpDeadline.Value = Convert.ToDateTime(row.Cells["deadline"].Value);
+                if (row.Cells["deadline"].Value != DBNull.Value)
+                {
+                    dtpDeadline.Value = Convert.ToDateTime(row.Cells["deadline"].Value);
+                }
+                else
+                {
+                    dtpDeadline.Value = DateTime.Now; // Beri tanggal hari ini jika di database kosong
+                }
             }
         }
 
@@ -221,6 +235,45 @@ namespace C3_ManajemenTugas
                 {
                     MessageBox.Show("Gagal hapus: " + ex.Message);
                 }
+            }
+        }
+
+        private void Deskripsi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dtpDeadline_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCari_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (conn.State == ConnectionState.Closed) conn.Open();
+
+                // Menggunakan klausa LIKE untuk mencari teks yang mengandung kata kunci
+                string query = "SELECT * FROM tugas WHERE judul LIKE @keyword";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@keyword", "%" + txtSearch.Text + "%");
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dgvTugas.DataSource = dt;
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Pencarian gagal: " + ex.Message);
             }
         }
     }

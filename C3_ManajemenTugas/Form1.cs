@@ -161,7 +161,37 @@ namespace C3_ManajemenTugas
         }
     catch (Exception ex) {
         MessageBox.Show("Gagal simpan: " + ex.Message);
-    }
+    
+            }
+        }
+
+        private void btnUbah_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(txtIDTugas.Text))
+                {
+                    MessageBox.Show("Pilih data yang ingin diubah dari tabel!");
+                    return;
+                }
+
+                if (conn.State == ConnectionState.Closed) conn.Open();
+                string query = "UPDATE tugas SET judul=@judul, deskripsi=@desc, deadline=@deadline WHERE id_tugas=@id";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@judul", txtJudul.Text);
+                cmd.Parameters.AddWithValue("@desc", txtDeskripsi.Text);
+                cmd.Parameters.AddWithValue("@deadline", dtpDeadline.Value);
+                cmd.Parameters.AddWithValue("@id", txtIDTugas.Text);
+
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Data berhasil diperbarui!");
+                LoadDataTugas();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal update: " + ex.Message);
+            }
         }
     }
 }

@@ -147,6 +147,7 @@
             this.btnUbah.TabIndex = 11;
             this.btnUbah.Text = "Ubah";
             this.btnUbah.UseVisualStyleBackColor = true;
+            this.btnUbah.Click += new System.EventHandler(this.btnUbah_Click);
             // 
             // btnHapus
             // 

@@ -41,5 +41,10 @@ namespace C3_ManajemenTugas
         {
 
         }
+
+        private void lblTotalTugas_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

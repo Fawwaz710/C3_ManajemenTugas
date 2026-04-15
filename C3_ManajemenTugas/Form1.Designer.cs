@@ -42,6 +42,7 @@
             this.btnHapus = new System.Windows.Forms.Button();
             this.btnCari = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.lblTotalTugas = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTugas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -165,11 +166,23 @@
             this.txtSearch.Size = new System.Drawing.Size(100, 22);
             this.txtSearch.TabIndex = 14;
             // 
+            // lblTotalTugas
+            // 
+            this.lblTotalTugas.AutoSize = true;
+            this.lblTotalTugas.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalTugas.Location = new System.Drawing.Point(517, 25);
+            this.lblTotalTugas.Name = "lblTotalTugas";
+            this.lblTotalTugas.Size = new System.Drawing.Size(107, 16);
+            this.lblTotalTugas.TabIndex = 15;
+            this.lblTotalTugas.Text = "Total Tugas: 0";
+            this.lblTotalTugas.Click += new System.EventHandler(this.lblTotalTugas_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblTotalTugas);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnCari);
             this.Controls.Add(this.btnHapus);
@@ -209,6 +222,7 @@
         private System.Windows.Forms.Button btnHapus;
         private System.Windows.Forms.Button btnCari;
         private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label lblTotalTugas;
     }
 }
 

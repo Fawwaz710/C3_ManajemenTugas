@@ -72,8 +72,8 @@ namespace C3_ManajemenTugas
         void ClearForm()
         {
             txtIDTugas.Clear();
-            txtJudul.Clear();
             txtDeskripsi.Clear();
+            txtJudul.Clear();
             dtpDeadline.Value = DateTime.Now;
             txtSearch.Clear();
         }
@@ -134,8 +134,8 @@ namespace C3_ManajemenTugas
             {
                 DataGridViewRow row = dgvTugas.Rows[e.RowIndex];
                 txtIDTugas.Text = row.Cells["id_tugas"].Value.ToString();
-                txtJudul.Text = row.Cells["judul"].Value.ToString();
-                txtDeskripsi.Text = row.Cells["deskripsi"].Value.ToString();
+                txtDeskripsi.Text = row.Cells["judul"].Value.ToString();
+                label3.Text = row.Cells["deskripsi"].Value.ToString();
                 if (row.Cells["deadline"].Value != DBNull.Value)
                 {
                     dtpDeadline.Value = Convert.ToDateTime(row.Cells["deadline"].Value);
@@ -152,7 +152,7 @@ namespace C3_ManajemenTugas
             try
             {
                 // COMMIT 14: VALIDASI INPUT
-                if (string.IsNullOrEmpty(txtJudul.Text) || string.IsNullOrEmpty(txtDeskripsi.Text))
+                if (string.IsNullOrEmpty(txtDeskripsi.Text) || string.IsNullOrEmpty(label3.Text))
                 {
                     MessageBox.Show("Judul dan Deskripsi tidak boleh kosong!");
                     return;
@@ -161,8 +161,8 @@ namespace C3_ManajemenTugas
                 if (conn.State == ConnectionState.Closed) conn.Open();
             string query = "INSERT INTO tugas (judul, deskripsi, deadline, dosen_id) VALUES (@judul, @desc, @deadline, @dosenId)";
             SqlCommand cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@judul", txtJudul.Text);
-            cmd.Parameters.AddWithValue("@desc", txtDeskripsi.Text);
+            cmd.Parameters.AddWithValue("@judul", txtDeskripsi.Text);
+            cmd.Parameters.AddWithValue("@desc", label3.Text);
             cmd.Parameters.AddWithValue("@deadline", dtpDeadline.Value);
             cmd.Parameters.AddWithValue("@dosenId", 1); // Hardcode ID Dosen sementara
 
@@ -193,8 +193,8 @@ namespace C3_ManajemenTugas
                 if (conn.State == ConnectionState.Closed) conn.Open();
                 string query = "UPDATE tugas SET judul=@judul, deskripsi=@desc, deadline=@deadline WHERE id_tugas=@id";
                 SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@judul", txtJudul.Text);
-                cmd.Parameters.AddWithValue("@desc", txtDeskripsi.Text);
+                cmd.Parameters.AddWithValue("@judul", txtDeskripsi.Text);
+                cmd.Parameters.AddWithValue("@desc", label3.Text);
                 cmd.Parameters.AddWithValue("@deadline", dtpDeadline.Value);
                 cmd.Parameters.AddWithValue("@id", txtIDTugas.Text);
 

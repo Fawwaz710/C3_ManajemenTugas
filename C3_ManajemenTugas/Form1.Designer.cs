@@ -30,9 +30,9 @@
         {
             this.dgvTugas = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.txtDeskripsi = new System.Windows.Forms.Label();
             this.txtJudul = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDeskripsi = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpDeadline = new System.Windows.Forms.DateTimePicker();
             this.txtIDTugas = new System.Windows.Forms.TextBox();
@@ -68,32 +68,32 @@
             this.label1.Text = "Judul Tugas";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox1
+            // txtJudul
             // 
-            this.textBox1.Location = new System.Drawing.Point(116, 49);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtJudul.Location = new System.Drawing.Point(116, 49);
+            this.txtJudul.Name = "txtJudul";
+            this.txtJudul.Size = new System.Drawing.Size(100, 22);
+            this.txtJudul.TabIndex = 3;
+            this.txtJudul.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 88);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 16);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Deskripsi";
+            this.label3.Click += new System.EventHandler(this.Deskripsi_Click);
             // 
             // txtDeskripsi
             // 
-            this.txtDeskripsi.AutoSize = true;
-            this.txtDeskripsi.Location = new System.Drawing.Point(12, 88);
+            this.txtDeskripsi.Location = new System.Drawing.Point(116, 85);
+            this.txtDeskripsi.Multiline = true;
             this.txtDeskripsi.Name = "txtDeskripsi";
-            this.txtDeskripsi.Size = new System.Drawing.Size(64, 16);
-            this.txtDeskripsi.TabIndex = 4;
-            this.txtDeskripsi.Text = "Deskripsi";
-            this.txtDeskripsi.Click += new System.EventHandler(this.Deskripsi_Click);
-            // 
-            // txtJudul
-            // 
-            this.txtJudul.Location = new System.Drawing.Point(116, 85);
-            this.txtJudul.Multiline = true;
-            this.txtJudul.Name = "txtJudul";
-            this.txtJudul.Size = new System.Drawing.Size(200, 59);
-            this.txtJudul.TabIndex = 5;
-            this.txtJudul.TextChanged += new System.EventHandler(this.txtJudul_TextChanged);
+            this.txtDeskripsi.Size = new System.Drawing.Size(200, 59);
+            this.txtDeskripsi.TabIndex = 5;
+            this.txtDeskripsi.TextChanged += new System.EventHandler(this.txtJudul_TextChanged);
             // 
             // label2
             // 
@@ -115,7 +115,7 @@
             // 
             // txtIDTugas
             // 
-            this.txtIDTugas.Location = new System.Drawing.Point(116, 232);
+            this.txtIDTugas.Location = new System.Drawing.Point(40, 260);
             this.txtIDTugas.Name = "txtIDTugas";
             this.txtIDTugas.Size = new System.Drawing.Size(100, 22);
             this.txtIDTugas.TabIndex = 8;
@@ -205,9 +205,9 @@
             this.Controls.Add(this.txtIDTugas);
             this.Controls.Add(this.dtpDeadline);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtJudul);
             this.Controls.Add(this.txtDeskripsi);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtJudul);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvTugas);
             this.Name = "Form1";
@@ -223,9 +223,9 @@
 
         private System.Windows.Forms.DataGridView dgvTugas;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label txtDeskripsi;
         private System.Windows.Forms.TextBox txtJudul;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtDeskripsi;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpDeadline;
         private System.Windows.Forms.TextBox txtIDTugas;

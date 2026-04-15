@@ -69,7 +69,21 @@ namespace C3_ManajemenTugas
                 }
             }
 
-      
+        void HitungTotalTugas()
+        {
+            try
+            {
+                if (conn.State == ConnectionState.Closed) conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) FROM tugas", conn);
+                int total = (int)cmd.ExecuteScalar();
+                lblTotalTugas.Text = "Total Tugas Tersedia: " + total.ToString();
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 

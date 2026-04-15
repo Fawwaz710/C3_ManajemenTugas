@@ -13,6 +13,7 @@ namespace C3_ManajemenTugas
 {
     public partial class Form1 : Form
     {
+            SqlConnection conn;
         public Form1()
         {
             InitializeComponent();
@@ -129,6 +130,29 @@ namespace C3_ManajemenTugas
                 txtDeskripsi.Text = row.Cells["deskripsi"].Value.ToString();
                 dtpDeadline.Value = Convert.ToDateTime(row.Cells["deadline"].Value);
             }
+        }
+
+        private void btnSimpan_Click(object sender, EventArgs e)
+        {
+            if (conn.State == ConnectionState.Closed) conn.Open();
+            string query = "INSERT INTO tugas (judul, deskripsi, deadline, dosen_id) VALUES (@judul, @desc, @deadline, @dosenId)";
+            SqlCommand cmd = new SqlCommand(query, conn);
+            cmd.Parameters.AddWithValue("@judul", txtJudul.Text);
+            cmd.Parameters.AddWithValue("@desc", txtDeskripsi.Text);
+            cmd.Parameters.AddWithValue("@deadline", dtpDeadline.Value);
+            cmd.Parameters.AddWithValue("@dosenId", 1); // Hardcode ID Dosen sementara
+
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Tugas berhasil disimpan!");
+
+            LoadDataTugas();   // Refresh tabel
+            HitungTotalTugas(); // Refresh statistik
+            ClearForm();       // Kosongkan input
+            conn.Close();
+        }
+    catch (Exception ex) {
+        MessageBox.Show("Gagal simpan: " + ex.Message);
+    }
         }
     }
 }

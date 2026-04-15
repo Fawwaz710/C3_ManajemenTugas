@@ -24,7 +24,7 @@ namespace C3_ManajemenTugas
             {
                 Koneksi kon = new Koneksi();
 
-                
+
                 SqlConnection conn = kon.GetConn();
 
                 conn.Open();
@@ -35,7 +35,14 @@ namespace C3_ManajemenTugas
             {
                 MessageBox.Show("Koneksi Gagal: " + ex.Message);
             }
-            void LoadDataTugas()
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            HitungTotalTugas(); 
+        }
+        }
+
+        void LoadDataTugas()
             {
                 try
                 {
@@ -61,8 +68,8 @@ namespace C3_ManajemenTugas
                     MessageBox.Show("Gagal load data: " + ex.Message);
                 }
             }
-        }
 
+      
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
@@ -71,6 +78,11 @@ namespace C3_ManajemenTugas
         private void lblTotalTugas_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnTampil_Click(object sender, EventArgs e)
+        {
+            LoadDataTugas();
         }
     }
 }

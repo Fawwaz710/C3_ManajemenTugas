@@ -122,6 +122,7 @@
             this.btnTampil.TabIndex = 9;
             this.btnTampil.Text = "Tampilkan Data";
             this.btnTampil.UseVisualStyleBackColor = true;
+            this.btnTampil.Click += new System.EventHandler(this.btnTampil_Click);
             // 
             // btnSimpan
             // 

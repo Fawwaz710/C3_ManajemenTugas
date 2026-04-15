@@ -36,5 +36,10 @@ namespace C3_ManajemenTugas
                 MessageBox.Show("Koneksi Gagal: " + ex.Message);
             }
         }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

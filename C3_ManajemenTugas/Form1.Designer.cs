@@ -36,6 +36,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.dtpDeadline = new System.Windows.Forms.DateTimePicker();
             this.txtIDTugas = new System.Windows.Forms.TextBox();
+            this.btnTampil = new System.Windows.Forms.Button();
+            this.btnSimpan = new System.Windows.Forms.Button();
+            this.btnUbah = new System.Windows.Forms.Button();
+            this.btnHapus = new System.Windows.Forms.Button();
+            this.btnCari = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTugas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,18 +106,76 @@
             // 
             // txtIDTugas
             // 
-            this.txtIDTugas.Location = new System.Drawing.Point(116, 192);
+            this.txtIDTugas.Location = new System.Drawing.Point(116, 201);
             this.txtIDTugas.Name = "txtIDTugas";
             this.txtIDTugas.Size = new System.Drawing.Size(100, 22);
             this.txtIDTugas.TabIndex = 8;
             this.txtIDTugas.Visible = false;
             this.txtIDTugas.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
+            // btnTampil
+            // 
+            this.btnTampil.Location = new System.Drawing.Point(513, 95);
+            this.btnTampil.Name = "btnTampil";
+            this.btnTampil.Size = new System.Drawing.Size(122, 23);
+            this.btnTampil.TabIndex = 9;
+            this.btnTampil.Text = "Tampilkan Data";
+            this.btnTampil.UseVisualStyleBackColor = true;
+            // 
+            // btnSimpan
+            // 
+            this.btnSimpan.Location = new System.Drawing.Point(513, 124);
+            this.btnSimpan.Name = "btnSimpan";
+            this.btnSimpan.Size = new System.Drawing.Size(122, 23);
+            this.btnSimpan.TabIndex = 10;
+            this.btnSimpan.Text = "Simpan";
+            this.btnSimpan.UseVisualStyleBackColor = true;
+            // 
+            // btnUbah
+            // 
+            this.btnUbah.Location = new System.Drawing.Point(513, 153);
+            this.btnUbah.Name = "btnUbah";
+            this.btnUbah.Size = new System.Drawing.Size(122, 23);
+            this.btnUbah.TabIndex = 11;
+            this.btnUbah.Text = "Ubah";
+            this.btnUbah.UseVisualStyleBackColor = true;
+            // 
+            // btnHapus
+            // 
+            this.btnHapus.Location = new System.Drawing.Point(513, 182);
+            this.btnHapus.Name = "btnHapus";
+            this.btnHapus.Size = new System.Drawing.Size(122, 23);
+            this.btnHapus.TabIndex = 12;
+            this.btnHapus.Text = "Hapus";
+            this.btnHapus.UseVisualStyleBackColor = true;
+            // 
+            // btnCari
+            // 
+            this.btnCari.Location = new System.Drawing.Point(513, 66);
+            this.btnCari.Name = "btnCari";
+            this.btnCari.Size = new System.Drawing.Size(122, 23);
+            this.btnCari.TabIndex = 13;
+            this.btnCari.Text = "Cari";
+            this.btnCari.UseVisualStyleBackColor = true;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(650, 67);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(100, 22);
+            this.txtSearch.TabIndex = 14;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.btnCari);
+            this.Controls.Add(this.btnHapus);
+            this.Controls.Add(this.btnUbah);
+            this.Controls.Add(this.btnSimpan);
+            this.Controls.Add(this.btnTampil);
             this.Controls.Add(this.txtIDTugas);
             this.Controls.Add(this.dtpDeadline);
             this.Controls.Add(this.label2);
@@ -139,6 +203,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpDeadline;
         private System.Windows.Forms.TextBox txtIDTugas;
+        private System.Windows.Forms.Button btnTampil;
+        private System.Windows.Forms.Button btnSimpan;
+        private System.Windows.Forms.Button btnUbah;
+        private System.Windows.Forms.Button btnHapus;
+        private System.Windows.Forms.Button btnCari;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }
 

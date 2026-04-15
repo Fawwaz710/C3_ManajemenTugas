@@ -43,6 +43,8 @@
             this.btnCari = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblTotalTugas = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTugas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +63,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 49);
+            this.label1.Location = new System.Drawing.Point(12, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 16);
             this.label1.TabIndex = 2;
@@ -70,7 +72,7 @@
             // 
             // txtJudul
             // 
-            this.txtJudul.Location = new System.Drawing.Point(116, 49);
+            this.txtJudul.Location = new System.Drawing.Point(116, 25);
             this.txtJudul.Name = "txtJudul";
             this.txtJudul.Size = new System.Drawing.Size(100, 22);
             this.txtJudul.TabIndex = 3;
@@ -79,7 +81,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 88);
+            this.label3.Location = new System.Drawing.Point(12, 56);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 16);
             this.label3.TabIndex = 4;
@@ -88,7 +90,7 @@
             // 
             // txtDeskripsi
             // 
-            this.txtDeskripsi.Location = new System.Drawing.Point(116, 85);
+            this.txtDeskripsi.Location = new System.Drawing.Point(116, 56);
             this.txtDeskripsi.Multiline = true;
             this.txtDeskripsi.Name = "txtDeskripsi";
             this.txtDeskripsi.Size = new System.Drawing.Size(200, 59);
@@ -190,11 +192,31 @@
             this.lblTotalTugas.Text = "Total Tugas: 0";
             this.lblTotalTugas.Click += new System.EventHandler(this.lblTotalTugas_Click);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(116, 124);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 24);
+            this.comboBox1.TabIndex = 16;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 124);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 16);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Nama Dosen ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.lblTotalTugas);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnCari);
@@ -236,6 +258,8 @@
         private System.Windows.Forms.Button btnCari;
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Label lblTotalTugas;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label4;
     }
 }
 

@@ -277,5 +277,32 @@ namespace C3_ManajemenTugas
                 MessageBox.Show("Pencarian gagal: " + ex.Message);
             }
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (conn.State == ConnectionState.Closed) conn.Open();
+
+                // Ambil user yang rolenya adalah 'dosen'
+                string query = "SELECT user_id, nama FROM users WHERE role = 'dosen'";
+                SqlCommand cmd = new SqlCommand(query, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+
+                cmbDosen.DataSource = dt;
+                cmbDosen.DisplayMember = "nama";    // Yang muncul di layar (Nama)
+                cmbDosen.ValueMember = "user_id";   // Yang disimpan ke database (ID)
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal load dosen: " + ex.Message);
+            }
+        }
+    }
     }
 }

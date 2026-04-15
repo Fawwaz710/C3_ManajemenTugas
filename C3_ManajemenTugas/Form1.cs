@@ -73,8 +73,9 @@ namespace C3_ManajemenTugas
         {
             txtIDTugas.Clear();
             txtJudul.Clear();
-            txtDeskripsi.Text = string.Empty;
+            txtDeskripsi.Clear();
             dtpDeadline.Value = DateTime.Now;
+            txtSearch.Clear();
         }
 
         void HitungTotalTugas()

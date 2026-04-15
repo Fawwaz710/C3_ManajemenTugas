@@ -134,7 +134,16 @@ namespace C3_ManajemenTugas
 
         private void btnSimpan_Click(object sender, EventArgs e)
         {
-            if (conn.State == ConnectionState.Closed) conn.Open();
+            try
+            {
+                // COMMIT 14: VALIDASI INPUT
+                if (string.IsNullOrEmpty(txtJudul.Text) || string.IsNullOrEmpty(txtDeskripsi.Text))
+                {
+                    MessageBox.Show("Judul dan Deskripsi tidak boleh kosong!");
+                    return;
+                }
+
+                if (conn.State == ConnectionState.Closed) conn.Open();
             string query = "INSERT INTO tugas (judul, deskripsi, deadline, dosen_id) VALUES (@judul, @desc, @deadline, @dosenId)";
             SqlCommand cmd = new SqlCommand(query, conn);
             cmd.Parameters.AddWithValue("@judul", txtJudul.Text);

@@ -98,5 +98,37 @@ namespace C3_ManajemenTugas
         {
             LoadDataTugas();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtJudul_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvTugas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvTugas_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dgvTugas.Rows[e.RowIndex];
+                txtIDTugas.Text = row.Cells["id_tugas"].Value.ToString();
+                txtJudul.Text = row.Cells["judul"].Value.ToString();
+                txtDeskripsi.Text = row.Cells["deskripsi"].Value.ToString();
+                dtpDeadline.Value = Convert.ToDateTime(row.Cells["deadline"].Value);
+            }
+        }
     }
 }

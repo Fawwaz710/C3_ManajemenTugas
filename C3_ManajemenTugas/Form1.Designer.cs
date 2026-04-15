@@ -55,6 +55,8 @@
             this.dgvTugas.RowTemplate.Height = 24;
             this.dgvTugas.Size = new System.Drawing.Size(495, 150);
             this.dgvTugas.TabIndex = 0;
+            this.dgvTugas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTugas_CellClick);
+            this.dgvTugas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTugas_CellContentClick);
             // 
             // label1
             // 
@@ -64,6 +66,7 @@
             this.label1.Size = new System.Drawing.Size(81, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Judul Tugas";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox1
             // 
@@ -71,6 +74,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 22);
             this.textBox1.TabIndex = 3;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Deskripsi
             // 
@@ -88,6 +92,7 @@
             this.txtJudul.Name = "txtJudul";
             this.txtJudul.Size = new System.Drawing.Size(151, 59);
             this.txtJudul.TabIndex = 5;
+            this.txtJudul.TextChanged += new System.EventHandler(this.txtJudul_TextChanged);
             // 
             // label2
             // 

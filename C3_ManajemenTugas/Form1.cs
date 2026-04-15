@@ -193,5 +193,30 @@ namespace C3_ManajemenTugas
                 MessageBox.Show("Gagal update: " + ex.Message);
             }
         }
+
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            if (confirm == DialogResult.Yes)
+            {
+                try
+                {
+                    
+                    if (conn.State == ConnectionState.Closed) conn.Open();
+                    SqlCommand cmd = new SqlCommand("DELETE FROM tugas WHERE id_tugas = @id", conn);
+                    cmd.Parameters.AddWithValue("@id", txtIDTugas.Text);
+                    cmd.ExecuteNonQuery();
+
+                    MessageBox.Show("Data berhasil dihapus");
+                    LoadDataTugas();
+                    HitungTotalTugas();
+                    ClearForm();
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal hapus: " + ex.Message);
+                }
+            }
+        }
     }
 }

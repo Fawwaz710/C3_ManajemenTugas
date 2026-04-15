@@ -196,6 +196,11 @@ namespace C3_ManajemenTugas
 
         private void btnHapus_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtIDTugas.Text)) return;
+
+            
+            DialogResult confirm = MessageBox.Show("Yakin ingin menghapus tugas ini?", "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
             if (confirm == DialogResult.Yes)
             {
                 try

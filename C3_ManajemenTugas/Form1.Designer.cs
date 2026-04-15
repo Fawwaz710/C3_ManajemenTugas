@@ -50,12 +50,13 @@
             // 
             // dgvTugas
             // 
+            this.dgvTugas.BackgroundColor = System.Drawing.SystemColors.HotTrack;
             this.dgvTugas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTugas.Location = new System.Drawing.Point(40, 288);
+            this.dgvTugas.Location = new System.Drawing.Point(773, 26);
             this.dgvTugas.Name = "dgvTugas";
             this.dgvTugas.RowHeadersWidth = 51;
             this.dgvTugas.RowTemplate.Height = 24;
-            this.dgvTugas.Size = new System.Drawing.Size(710, 150);
+            this.dgvTugas.Size = new System.Drawing.Size(448, 424);
             this.dgvTugas.TabIndex = 0;
             this.dgvTugas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTugas_CellClick);
             this.dgvTugas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTugas_CellContentClick);
@@ -100,7 +101,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 182);
+            this.label2.Location = new System.Drawing.Point(14, 182);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 16);
             this.label2.TabIndex = 6;
@@ -204,7 +205,7 @@
             "Dosen HCI"});
             this.cmbDosen.Location = new System.Drawing.Point(116, 124);
             this.cmbDosen.Name = "cmbDosen";
-            this.cmbDosen.Size = new System.Drawing.Size(121, 24);
+            this.cmbDosen.Size = new System.Drawing.Size(166, 24);
             this.cmbDosen.TabIndex = 16;
             this.cmbDosen.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -221,7 +222,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(1268, 487);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbDosen);
             this.Controls.Add(this.lblTotalTugas);

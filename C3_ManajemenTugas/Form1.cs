@@ -35,6 +35,32 @@ namespace C3_ManajemenTugas
             {
                 MessageBox.Show("Koneksi Gagal: " + ex.Message);
             }
+            void LoadDataTugas()
+            {
+                try
+                {
+                    if (conn.State == ConnectionState.Closed) conn.Open();
+
+                    // Query untuk mengambil data tugas dan nama dosennya
+                    string query = @"SELECT t.id_tugas, t.judul, t.deskripsi, t.deadline, u.nama as nama_dosen 
+                         FROM tugas t 
+                         JOIN users u ON t.dosen_id = u.user_id";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    DataTable dt = new DataTable();
+                    dt.Load(reader);
+                    dgvTugas.DataSource = dt; // dgvTugas adalah nama DataGridView Anda
+
+                    reader.Close();
+                    conn.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Gagal load data: " + ex.Message);
+                }
+            }
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)

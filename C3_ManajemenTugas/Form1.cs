@@ -16,5 +16,20 @@ namespace C3_ManajemenTugas
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                SqlConnection conn = kon.GetConn();
+                conn.Open();
+                MessageBox.Show("Koneksi ke Database TugasDB Berhasil!");
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Koneksi Gagal: " + ex.Message);
+            }
+        }
     }
 }

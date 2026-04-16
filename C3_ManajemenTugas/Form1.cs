@@ -27,6 +27,10 @@ namespace C3_ManajemenTugas
             try
             {
                 if (conn.State == ConnectionState.Closed) conn.Open();
+
+             
+                MessageBox.Show("Koneksi ke Database TugasDB Berhasil!");
+
                 conn.Close();
 
                 LoadDosen();
@@ -35,6 +39,7 @@ namespace C3_ManajemenTugas
             }
             catch (Exception ex)
             {
+                
                 MessageBox.Show("Koneksi Gagal: " + ex.Message);
             }
         }

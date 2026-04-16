@@ -222,7 +222,7 @@
             this.lblTotalTugas.AutoSize = true;
             this.lblTotalTugas.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.lblTotalTugas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalTugas.Location = new System.Drawing.Point(766, 9);
+            this.lblTotalTugas.Location = new System.Drawing.Point(583, 9);
             this.lblTotalTugas.Name = "lblTotalTugas";
             this.lblTotalTugas.Size = new System.Drawing.Size(143, 28);
             this.lblTotalTugas.TabIndex = 15;

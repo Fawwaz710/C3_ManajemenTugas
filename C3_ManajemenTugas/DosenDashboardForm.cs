@@ -11,12 +11,12 @@ using System.Data.SqlClient;
 
 namespace C3_ManajemenTugas
 {
-    public partial class Form1 : Form
+    public partial class DosenDashboardForm : Form
     {
         Koneksi kon = new Koneksi();
         SqlConnection conn;
 
-        public Form1()
+        public DosenDashboardForm()
         {
             InitializeComponent();
             conn = kon.GetConn();
@@ -266,5 +266,20 @@ namespace C3_ManajemenTugas
         private void textBox2_TextChanged(object sender, EventArgs e) { }
         private void lblTotalTugas_Click(object sender, EventArgs e) { }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) { }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

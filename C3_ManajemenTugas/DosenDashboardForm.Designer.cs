@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DosenDashboardForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
@@ -52,7 +52,7 @@
             this.lblTotalTugas = new System.Windows.Forms.Label();
             this.btnCari = new System.Windows.Forms.Button();
             this.btnSimpan = new System.Windows.Forms.Button();
-            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.txtCari = new System.Windows.Forms.TextBox();
             this.btnHapus = new System.Windows.Forms.Button();
             this.btnUbah = new System.Windows.Forms.Button();
             this.dgvTugas = new System.Windows.Forms.DataGridView();
@@ -180,7 +180,7 @@
             this.tabPage1.Controls.Add(this.lblTotalTugas);
             this.tabPage1.Controls.Add(this.btnCari);
             this.tabPage1.Controls.Add(this.btnSimpan);
-            this.tabPage1.Controls.Add(this.txtSearch);
+            this.tabPage1.Controls.Add(this.txtCari);
             this.tabPage1.Controls.Add(this.btnHapus);
             this.tabPage1.Controls.Add(this.btnUbah);
             this.tabPage1.Controls.Add(this.dgvTugas);
@@ -343,13 +343,13 @@
             this.btnSimpan.UseVisualStyleBackColor = false;
             this.btnSimpan.Click += new System.EventHandler(this.btnSimpan_Click);
             // 
-            // txtSearch
+            // txtCari
             // 
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(506, 330);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(160, 27);
-            this.txtSearch.TabIndex = 22;
+            this.txtCari.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCari.Location = new System.Drawing.Point(506, 330);
+            this.txtCari.Name = "txtCari";
+            this.txtCari.Size = new System.Drawing.Size(160, 27);
+            this.txtCari.TabIndex = 22;
             // 
             // btnHapus
             // 
@@ -379,14 +379,14 @@
             this.dgvTugas.AutoGenerateColumns = false;
             this.dgvTugas.BackgroundColor = System.Drawing.Color.DarkGray;
             this.dgvTugas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.RoyalBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTugas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.RoyalBlue;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTugas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTugas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTugas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idtugasDataGridViewTextBoxColumn,
@@ -886,7 +886,7 @@
         private System.Windows.Forms.Label lblTotalTugas;
         private System.Windows.Forms.Button btnCari;
         private System.Windows.Forms.Button btnSimpan;
-        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.TextBox txtCari;
         private System.Windows.Forms.Button btnHapus;
         private System.Windows.Forms.Button btnUbah;
         private System.Windows.Forms.DataGridView dgvTugas;

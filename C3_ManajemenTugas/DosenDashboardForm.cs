@@ -27,7 +27,7 @@ namespace C3_ManajemenTugas
                 // 3. KRUSIAL: Filter agar dosen hanya melihat tugas miliknya
                 // Ini akan menyaring data yang muncul di GridView dan TextBox yang sudah di-tag
                 this.tugasBindingSource.Filter = "dosen_id = " + UserSession.UserId;
-                this.v_MonitoringMahasiswaBindingSource.Filter = "dosen_id = " + UserSession.UserId;
+                this.vMonitoringMahasiswaBindingSource.Filter = "dosen_id = " + UserSession.UserId;
             }
             catch (Exception ex)
             {

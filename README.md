@@ -1,45 +1,69 @@
-# Sistem Manajemen Tugas Mahasiswa - UCP 1 PABD
+# 🎓 Sistem Manajemen Tugas Mahasiswa (LMS Mini) - Project UCP PABD
 
-Aplikasi manajemen tugas berbasis desktop yang dibangun menggunakan **C# Windows Forms** dan **SQL Server**. Proyek ini dibuat untuk memenuhi penugasan UCP 1 mata kuliah Pengembangan Aplikasi Basis Data.
+Aplikasi manajemen tugas (LMS Mini) berbasis desktop yang dibangun menggunakan **C# Windows Forms** dan **SQL Server**. Proyek ini mengimplementasikan arsitektur database tingkat lanjut dan fitur keamanan untuk memenuhi kriteria ujian Pengembangan Aplikasi Basis Data.
 
-## 🚀 Fitur Aplikasi
-- **Koneksi Database**: Cek status koneksi saat aplikasi dimulai.
-- **Manajemen Tugas (CRUD)**: Tambah, Lihat, Ubah, dan Hapus data tugas.
-- **Pencarian**: Mencari tugas berdasarkan judul.
-- **Statistik**: Menampilkan total tugas yang tersedia (ExecuteScalar).
-- **Relasi Dosen**: Memilih dosen pengampu melalui ComboBox dinamis.
+## 🌟 Fitur Utama & Kriteria Ujian
+
+Aplikasi ini telah memenuhi standar teknis berikut:
+- **Arsitektur Database Terpisah**: Menggunakan **VIEW** untuk operasi baca (Select) dan **Stored Procedures** untuk operasi tulis (Insert, Update, Delete, Search).
+- **Advanced Data Binding**: Implementasi **Disconnected Architecture** menggunakan `BindingSource` dan `BindingNavigator` pada DataGridView.
+- **Role-Based Authentication**: Sistem Login dengan dua peran berbeda (Dosen & Mahasiswa) dengan hak akses fitur yang disesuaikan.
+- **Security (SQL Injection)**: Demonstrasi celah keamanan SQL Injection pada Form Login dan implementasi **Parameterized Query** sebagai solusinya.
+- **Validasi Deadline**: Logika khusus untuk mencegah input tenggat waktu di masa lalu atau terlalu jauh di masa depan.
+- **Data Recovery**: Fitur **Reset Data** menggunakan `IDENTITY_INSERT` untuk mengembalikan data sampel dari tabel backup.
+- **Reporting**: Fitur cetak nilai mahasiswa dalam format laporan.
 
 ## 📸 Screenshot Aplikasi
 
-### 1. Form Koneksi Database
-![Koneksi Berhasil]<img width="1741" height="519" alt="{A1CCA279-BE7E-4135-9E89-AC4C61875A9D}" src="https://github.com/user-attachments/assets/03dd84a2-5a43-495c-ad9c-b6e0afdb9249" />
+### 1. Form Login & Registrasi
+Halaman utama untuk autentikasi user dengan role Dosen atau Mahasiswa.
+<img width="537" height="533" alt="{5288D05A-428F-49A8-8027-B0292D1D97F2}" src="https://github.com/user-attachments/assets/adc1183c-b9b3-4cbd-8c32-a8016be3b336" />
+<img width="513" height="497" alt="{46472643-3107-4408-BB46-A6AF95EC66FB}" src="https://github.com/user-attachments/assets/354956bb-f49c-4440-8592-20ed3b3557ae" />
 
 
-### 2. Form Input & Tampilan Data (DataGridView)
-![Tampilan Utama] <img width="871" height="610" alt="{96A6E5D2-0491-4929-89A0-5A6728319DA3}" src="https://github.com/user-attachments/assets/5dfbba22-9e73-4abd-aba8-94a470befa9b" />
+### 2. Dashboard Dosen (Manajemen & Monitoring)
+Dosen dapat mengelola tugas menggunakan **Stored Procedures** dan memantau pengumpulan tugas mahasiswa melalui **VIEW**.
+<img width="1282" height="605" alt="{1EDD5D91-F936-4463-822A-2A0AFDCCDABD}" src="https://github.com/user-attachments/assets/e389857d-6e41-4f15-88f4-a9c2853e4566" />
+<img width="1283" height="595" alt="{ED171BB8-6550-4558-9383-F37D60F431C5}" src="https://github.com/user-attachments/assets/acbc89f0-2987-4d61-adaf-a757146345ed" />
+
+<img width="1296" height="600" alt="{98DDACEB-007E-43A8-BAE2-DAC0B29CC523}" src="https://github.com/user-attachments/assets/47d94908-0024-4973-8791-aaeae76021dd" />
 
 
-### 3. Bukti Operasi CRUD (Insert, Update, Delete)
-![Bukti CRUD]
-<img width="884" height="616" alt="{115A9445-7087-4F53-824F-0A9DDAD194BD}" src="https://github.com/user-attachments/assets/17cdbbe9-deb4-47a0-9dbb-2167586f437f" />
-<img width="869" height="613" alt="{2A41C61F-1485-42B7-A596-D50D64824BB8}" src="https://github.com/user-attachments/assets/05ef83bb-bc53-471a-b188-5069dd2fded7" />
-<img width="961" height="608" alt="{ABD0A480-5727-44A5-864A-40B812887ABC}" src="https://github.com/user-attachments/assets/ad8f75b8-2b65-4549-b483-102c5ff5f2dd" />
-<img width="884" height="626" alt="{B4C15E02-5197-443B-A32D-F9808F2D6FAE}" src="https://github.com/user-attachments/assets/80d356e8-5108-4879-8dae-de956c1fb6cc" />
+### 3. Fitur Data Binding & Navigator
+Implementasi navigasi data otomatis sesuai standar modul praktikum.
+<img width="1269" height="495" alt="{820F45E2-72D4-4D20-AE7A-48A0934C15C5}" src="https://github.com/user-attachments/assets/391a31cd-692d-4bef-a86a-cb888e2a79fd" />
 
 
-### 4. Fitur Pencarian (Search)
-![Fitur Cari]<img width="851" height="222" alt="{3BEE36BA-8175-4B20-9D9B-2A4952BC5C0E}" src="https://github.com/user-attachments/assets/0545c754-5698-40cc-9c90-3252ce66d0ef" />
+### 4. Demonstrasi SQL Injection & Reset Data
+Halaman pengujian keamanan untuk mensimulasikan serangan SQL Injection dan tombol Reset untuk pemulihan data instan.
+<img width="1251" height="414" alt="{2F4593AB-825E-4DDA-90D8-F7D30CBEE487}" src="https://github.com/user-attachments/assets/c76e7cc6-94a9-4567-9919-60f49bced0c2" />
+<img width="1281" height="587" alt="{B57BC2AD-D969-449D-A4AF-CE42A4AA25FC}" src="https://github.com/user-attachments/assets/d599c580-0b01-4037-a0b8-1738bbe2d2f6" />
 
 
-## 🛠️ Teknologi yang Digunakan
-- **Bahasa**: C#
-- **Framework**: .NET Framework (Windows Forms)
+
+## 🛡️ Skenario SQL Injection (Kriteria Ujian)
+Proyek ini menyertakan simulasi serangan SQL Injection untuk tujuan edukasi:
+1. **Bypass Login**: Masukkan `' OR '1'='1` pada kolom password untuk masuk tanpa akun valid.
+2. **Data Manipulation**: Menggunakan tombol "Test Injection" untuk merubah semua judul tugas menjadi "HACKED" melalui celah *string concatenation*.
+3. **Defense**: Solusi pencegahan menggunakan `SqlParameter` telah diterapkan pada seluruh fungsi CRUD utama.
+
+## 🛠️ Teknologi & Arsitektur
+- **Bahasa**: C# (.NET Framework)
 - **Database**: Microsoft SQL Server
-- **Library**: ADO.NET (System.Data.SqlClient)
+- **Metode Koneksi**: ADO.NET (SqlConnection, SqlDataAdapter, DataSet)
+- **Objek Database**: 
+  - `v_TugasLengkap`: View untuk relasi tabel tugas dan dosen.
+  - `sp_InsertTugas`, `sp_UpdateTugas`, `sp_DeleteTugas`: Stored Procedures untuk integritas data.
 
 ## 📝 Cara Instalasi
 1. Clone repository ini.
-2. Jalankan script SQL di folder `/SQL/schema.sql` pada SQL Server Anda.
-3. Buka file `.sln` di Visual Studio.
-4. Sesuaikan `connectionString` di file `Koneksi.cs`.
-5. Tekan F5 untuk menjalankan.
+2. Buka SQL Server Management Studio, jalankan script di folder `/SQL/schema.sql`.
+3. Pastikan tabel `tugas_Backup` telah dibuat untuk fitur Reset.
+4. Buka file `.sln` di Visual Studio.
+5. Sesuaikan *Connection String* pada file `Koneksi.cs` dengan Nama Server Anda.
+6. Build dan Run (F5).
+
+## 👤 Disusun Oleh
+- **Nama**: [Nama Anda]
+- **NIM**: [NIM Anda]
+- **Mata Kuliah**: Pengembangan Aplikasi Basis Data

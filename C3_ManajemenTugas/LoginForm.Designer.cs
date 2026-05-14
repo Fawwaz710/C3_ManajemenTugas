@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtNama = new System.Windows.Forms.TextBox();
@@ -36,6 +37,11 @@
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.tugasDBDataSet = new C3_ManajemenTugas.TugasDBDataSet();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.usersTableAdapter = new C3_ManajemenTugas.TugasDBDataSetTableAdapters.usersTableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.tugasDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -58,6 +64,7 @@
             // 
             // txtNama
             // 
+            this.txtNama.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "nama", true));
             this.txtNama.Location = new System.Drawing.Point(119, 211);
             this.txtNama.Name = "txtNama";
             this.txtNama.Size = new System.Drawing.Size(331, 22);
@@ -65,6 +72,7 @@
             // 
             // txtPassword
             // 
+            this.txtPassword.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "password", true));
             this.txtPassword.Location = new System.Drawing.Point(119, 303);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(331, 22);
@@ -116,6 +124,20 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Kata Sandi:";
             // 
+            // tugasDBDataSet
+            // 
+            this.tugasDBDataSet.DataSetName = "TugasDBDataSet";
+            this.tugasDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataMember = "users";
+            this.usersBindingSource.DataSource = this.tugasDBDataSet;
+            // 
+            // usersTableAdapter
+            // 
+            this.usersTableAdapter.ClearBeforeFill = true;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -131,6 +153,9 @@
             this.Controls.Add(this.label1);
             this.Name = "LoginForm";
             this.Text = "LoginForm";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.tugasDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,5 +171,8 @@
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private TugasDBDataSet tugasDBDataSet;
+        private System.Windows.Forms.BindingSource usersBindingSource;
+        private TugasDBDataSetTableAdapters.usersTableAdapter usersTableAdapter;
     }
 }

@@ -56,6 +56,13 @@
             this.btnHapus = new System.Windows.Forms.Button();
             this.btnUbah = new System.Windows.Forms.Button();
             this.dgvTugas = new System.Windows.Forms.DataGridView();
+            this.idtugasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.judulDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deskripsiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deadlineDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dosenidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tugasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tugasDBDataSet = new C3_ManajemenTugas.TugasDBDataSet();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dtpJam = new System.Windows.Forms.DateTimePicker();
             this.txtNama = new System.Windows.Forms.TextBox();
@@ -70,25 +77,44 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnUpdateNilai = new System.Windows.Forms.Button();
             this.txtNilai = new System.Windows.Forms.TextBox();
+            this.vMonitoringMahasiswaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tugasDBDataSet1 = new C3_ManajemenTugas.TugasDBDataSet1();
             this.label7 = new System.Windows.Forms.Label();
             this.lblJudulTugas = new System.Windows.Forms.Label();
             this.lblNamaMhs = new System.Windows.Forms.Label();
             this.dgvMonitoring = new System.Windows.Forms.DataGridView();
+            this.idpengumpulanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.namamahasiswaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.judultugasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fileurlDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.waktusubmitDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nilaiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dosenidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.tugasTableAdapter = new C3_ManajemenTugas.TugasDBDataSetTableAdapters.tugasTableAdapter();
+            this.pengumpulanBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pengumpulanTableAdapter = new C3_ManajemenTugas.TugasDBDataSetTableAdapters.pengumpulanTableAdapter();
+            this.v_MonitoringMahasiswaTableAdapter = new C3_ManajemenTugas.TugasDBDataSet1TableAdapters.v_MonitoringMahasiswaTableAdapter();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingNavigator1)).BeginInit();
             this.bindingNavigator1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTugas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tugasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tugasDBDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vMonitoringMahasiswaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tugasDBDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMonitoring)).BeginInit();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pengumpulanBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -145,7 +171,7 @@
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(927, 514);
+            this.tabControl1.Size = new System.Drawing.Size(927, 494);
             this.tabControl1.TabIndex = 19;
             // 
             // tabPage1
@@ -162,11 +188,10 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(919, 485);
+            this.tabPage1.Size = new System.Drawing.Size(919, 465);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Kelola Tugas";
             this.tabPage1.UseVisualStyleBackColor = true;
-            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // bindingNavigator1
             // 
@@ -197,7 +222,6 @@
             this.bindingNavigator1.Size = new System.Drawing.Size(302, 27);
             this.bindingNavigator1.TabIndex = 23;
             this.bindingNavigator1.Text = "bindingNavigator1";
-            this.bindingNavigator1.RefreshItems += new System.EventHandler(this.bindingNavigator1_RefreshItems);
             // 
             // bindingNavigatorAddNewItem
             // 
@@ -290,12 +314,11 @@
             this.lblTotalTugas.AutoSize = true;
             this.lblTotalTugas.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.lblTotalTugas.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalTugas.Location = new System.Drawing.Point(656, 296);
+            this.lblTotalTugas.Location = new System.Drawing.Point(747, 330);
             this.lblTotalTugas.Name = "lblTotalTugas";
             this.lblTotalTugas.Size = new System.Drawing.Size(143, 28);
             this.lblTotalTugas.TabIndex = 15;
             this.lblTotalTugas.Text = "Total Tugas: 0";
-            this.lblTotalTugas.Click += new System.EventHandler(this.lblTotalTugas_Click);
             // 
             // btnCari
             // 
@@ -306,7 +329,7 @@
             this.btnCari.TabIndex = 21;
             this.btnCari.Text = "Cari Tugas";
             this.btnCari.UseVisualStyleBackColor = true;
-            this.btnCari.Click += new System.EventHandler(this.btnCari_Click);
+            this.btnCari.Click += new System.EventHandler(this.btnCari_Click_1);
             // 
             // btnSimpan
             // 
@@ -338,7 +361,6 @@
             this.btnHapus.TabIndex = 20;
             this.btnHapus.Text = "Hapus";
             this.btnHapus.UseVisualStyleBackColor = false;
-            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
             // btnUbah
             // 
@@ -354,6 +376,7 @@
             // dgvTugas
             // 
             this.dgvTugas.AllowUserToAddRows = false;
+            this.dgvTugas.AutoGenerateColumns = false;
             this.dgvTugas.BackgroundColor = System.Drawing.Color.DarkGray;
             this.dgvTugas.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -365,6 +388,13 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvTugas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvTugas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTugas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idtugasDataGridViewTextBoxColumn,
+            this.judulDataGridViewTextBoxColumn,
+            this.deskripsiDataGridViewTextBoxColumn,
+            this.deadlineDataGridViewTextBoxColumn,
+            this.dosenidDataGridViewTextBoxColumn});
+            this.dgvTugas.DataSource = this.tugasBindingSource;
             this.dgvTugas.EnableHeadersVisualStyles = false;
             this.dgvTugas.Location = new System.Drawing.Point(497, 84);
             this.dgvTugas.Name = "dgvTugas";
@@ -374,6 +404,61 @@
             this.dgvTugas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTugas.Size = new System.Drawing.Size(416, 186);
             this.dgvTugas.TabIndex = 17;
+            // 
+            // idtugasDataGridViewTextBoxColumn
+            // 
+            this.idtugasDataGridViewTextBoxColumn.DataPropertyName = "id_tugas";
+            this.idtugasDataGridViewTextBoxColumn.HeaderText = "id_tugas";
+            this.idtugasDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idtugasDataGridViewTextBoxColumn.Name = "idtugasDataGridViewTextBoxColumn";
+            this.idtugasDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idtugasDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // judulDataGridViewTextBoxColumn
+            // 
+            this.judulDataGridViewTextBoxColumn.DataPropertyName = "judul";
+            this.judulDataGridViewTextBoxColumn.HeaderText = "judul";
+            this.judulDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.judulDataGridViewTextBoxColumn.Name = "judulDataGridViewTextBoxColumn";
+            this.judulDataGridViewTextBoxColumn.ReadOnly = true;
+            this.judulDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // deskripsiDataGridViewTextBoxColumn
+            // 
+            this.deskripsiDataGridViewTextBoxColumn.DataPropertyName = "deskripsi";
+            this.deskripsiDataGridViewTextBoxColumn.HeaderText = "deskripsi";
+            this.deskripsiDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.deskripsiDataGridViewTextBoxColumn.Name = "deskripsiDataGridViewTextBoxColumn";
+            this.deskripsiDataGridViewTextBoxColumn.ReadOnly = true;
+            this.deskripsiDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // deadlineDataGridViewTextBoxColumn
+            // 
+            this.deadlineDataGridViewTextBoxColumn.DataPropertyName = "deadline";
+            this.deadlineDataGridViewTextBoxColumn.HeaderText = "deadline";
+            this.deadlineDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.deadlineDataGridViewTextBoxColumn.Name = "deadlineDataGridViewTextBoxColumn";
+            this.deadlineDataGridViewTextBoxColumn.ReadOnly = true;
+            this.deadlineDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dosenidDataGridViewTextBoxColumn
+            // 
+            this.dosenidDataGridViewTextBoxColumn.DataPropertyName = "dosen_id";
+            this.dosenidDataGridViewTextBoxColumn.HeaderText = "dosen_id";
+            this.dosenidDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dosenidDataGridViewTextBoxColumn.Name = "dosenidDataGridViewTextBoxColumn";
+            this.dosenidDataGridViewTextBoxColumn.ReadOnly = true;
+            this.dosenidDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // tugasBindingSource
+            // 
+            this.tugasBindingSource.DataMember = "tugas";
+            this.tugasBindingSource.DataSource = this.tugasDBDataSet;
+            // 
+            // tugasDBDataSet
+            // 
+            this.tugasDBDataSet.DataSetName = "TugasDBDataSet";
+            this.tugasDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // groupBox1
             // 
@@ -394,10 +479,10 @@
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Input Detail Tugas";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // dtpJam
             // 
+            this.dtpJam.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.tugasBindingSource, "deadline", true));
             this.dtpJam.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpJam.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpJam.Location = new System.Drawing.Point(159, 168);
@@ -410,6 +495,7 @@
             // 
             // txtNama
             // 
+            this.txtNama.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tugasDBDataSet, "users.nama", true));
             this.txtNama.Location = new System.Drawing.Point(17, 108);
             this.txtNama.Name = "txtNama";
             this.txtNama.Size = new System.Drawing.Size(282, 24);
@@ -425,7 +511,6 @@
             this.label1.Size = new System.Drawing.Size(86, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Judul Tugas";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label4
             // 
@@ -448,7 +533,6 @@
             this.label2.Size = new System.Drawing.Size(169, 20);
             this.label2.TabIndex = 6;
             this.label2.Text = "Deadline (Tanggal & Jam)";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -460,19 +544,19 @@
             this.label3.Size = new System.Drawing.Size(69, 20);
             this.label3.TabIndex = 4;
             this.label3.Text = "Deskripsi";
-            this.label3.Click += new System.EventHandler(this.Deskripsi_Click);
             // 
             // txtJudul
             // 
+            this.txtJudul.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tugasBindingSource, "judul", true));
             this.txtJudul.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtJudul.Location = new System.Drawing.Point(16, 50);
             this.txtJudul.Name = "txtJudul";
             this.txtJudul.Size = new System.Drawing.Size(100, 27);
             this.txtJudul.TabIndex = 3;
-            this.txtJudul.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // dtpTanggal
             // 
+            this.dtpTanggal.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.tugasBindingSource, "deadline", true));
             this.dtpTanggal.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpTanggal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpTanggal.Location = new System.Drawing.Point(17, 168);
@@ -481,10 +565,10 @@
             this.dtpTanggal.Name = "dtpTanggal";
             this.dtpTanggal.Size = new System.Drawing.Size(124, 27);
             this.dtpTanggal.TabIndex = 7;
-            this.dtpTanggal.ValueChanged += new System.EventHandler(this.dtpDeadline_ValueChanged);
             // 
             // txtDeskripsi
             // 
+            this.txtDeskripsi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tugasBindingSource, "deskripsi", true));
             this.txtDeskripsi.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDeskripsi.Location = new System.Drawing.Point(17, 235);
             this.txtDeskripsi.Multiline = true;
@@ -492,7 +576,6 @@
             this.txtDeskripsi.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDeskripsi.Size = new System.Drawing.Size(232, 107);
             this.txtDeskripsi.TabIndex = 5;
-            this.txtDeskripsi.TextChanged += new System.EventHandler(this.txtJudul_TextChanged);
             // 
             // tabPage2
             // 
@@ -502,7 +585,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(919, 485);
+            this.tabPage2.Size = new System.Drawing.Size(919, 465);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Monitoring MHS";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -536,10 +619,21 @@
             // 
             // txtNilai
             // 
+            this.txtNilai.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vMonitoringMahasiswaBindingSource, "nilai", true));
             this.txtNilai.Location = new System.Drawing.Point(22, 161);
             this.txtNilai.Name = "txtNilai";
             this.txtNilai.Size = new System.Drawing.Size(100, 27);
             this.txtNilai.TabIndex = 6;
+            // 
+            // vMonitoringMahasiswaBindingSource
+            // 
+            this.vMonitoringMahasiswaBindingSource.DataMember = "v_MonitoringMahasiswa";
+            this.vMonitoringMahasiswaBindingSource.DataSource = this.tugasDBDataSet1;
+            // 
+            // tugasDBDataSet1
+            // 
+            this.tugasDBDataSet1.DataSetName = "TugasDBDataSet1";
+            this.tugasDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label7
             // 
@@ -553,6 +647,7 @@
             // lblJudulTugas
             // 
             this.lblJudulTugas.AutoSize = true;
+            this.lblJudulTugas.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vMonitoringMahasiswaBindingSource, "judul_tugas", true));
             this.lblJudulTugas.Location = new System.Drawing.Point(397, 50);
             this.lblJudulTugas.Name = "lblJudulTugas";
             this.lblJudulTugas.Size = new System.Drawing.Size(60, 20);
@@ -562,16 +657,28 @@
             // lblNamaMhs
             // 
             this.lblNamaMhs.AutoSize = true;
+            this.lblNamaMhs.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vMonitoringMahasiswaBindingSource, "nama_mahasiswa", true));
             this.lblNamaMhs.Location = new System.Drawing.Point(18, 38);
             this.lblNamaMhs.Name = "lblNamaMhs";
-            this.lblNamaMhs.Size = new System.Drawing.Size(93, 20);
+            this.lblNamaMhs.Size = new System.Drawing.Size(98, 20);
             this.lblNamaMhs.TabIndex = 3;
-            this.lblNamaMhs.Text = "Mahasiswa";
+            this.lblNamaMhs.Text = "Mahasiswa:";
             // 
             // dgvMonitoring
             // 
             this.dgvMonitoring.AllowUserToAddRows = false;
+            this.dgvMonitoring.AutoGenerateColumns = false;
             this.dgvMonitoring.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMonitoring.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idpengumpulanDataGridViewTextBoxColumn,
+            this.namamahasiswaDataGridViewTextBoxColumn,
+            this.judultugasDataGridViewTextBoxColumn,
+            this.fileurlDataGridViewTextBoxColumn,
+            this.waktusubmitDataGridViewTextBoxColumn,
+            this.nilaiDataGridViewTextBoxColumn,
+            this.statusDataGridViewTextBoxColumn,
+            this.dosenidDataGridViewTextBoxColumn1});
+            this.dgvMonitoring.DataSource = this.vMonitoringMahasiswaBindingSource;
             this.dgvMonitoring.Location = new System.Drawing.Point(27, 69);
             this.dgvMonitoring.Name = "dgvMonitoring";
             this.dgvMonitoring.ReadOnly = true;
@@ -580,7 +687,78 @@
             this.dgvMonitoring.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMonitoring.Size = new System.Drawing.Size(857, 150);
             this.dgvMonitoring.TabIndex = 1;
-            this.dgvMonitoring.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // idpengumpulanDataGridViewTextBoxColumn
+            // 
+            this.idpengumpulanDataGridViewTextBoxColumn.DataPropertyName = "id_pengumpulan";
+            this.idpengumpulanDataGridViewTextBoxColumn.HeaderText = "id_pengumpulan";
+            this.idpengumpulanDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idpengumpulanDataGridViewTextBoxColumn.Name = "idpengumpulanDataGridViewTextBoxColumn";
+            this.idpengumpulanDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idpengumpulanDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // namamahasiswaDataGridViewTextBoxColumn
+            // 
+            this.namamahasiswaDataGridViewTextBoxColumn.DataPropertyName = "nama_mahasiswa";
+            this.namamahasiswaDataGridViewTextBoxColumn.HeaderText = "nama_mahasiswa";
+            this.namamahasiswaDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.namamahasiswaDataGridViewTextBoxColumn.Name = "namamahasiswaDataGridViewTextBoxColumn";
+            this.namamahasiswaDataGridViewTextBoxColumn.ReadOnly = true;
+            this.namamahasiswaDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // judultugasDataGridViewTextBoxColumn
+            // 
+            this.judultugasDataGridViewTextBoxColumn.DataPropertyName = "judul_tugas";
+            this.judultugasDataGridViewTextBoxColumn.HeaderText = "judul_tugas";
+            this.judultugasDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.judultugasDataGridViewTextBoxColumn.Name = "judultugasDataGridViewTextBoxColumn";
+            this.judultugasDataGridViewTextBoxColumn.ReadOnly = true;
+            this.judultugasDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // fileurlDataGridViewTextBoxColumn
+            // 
+            this.fileurlDataGridViewTextBoxColumn.DataPropertyName = "file_url";
+            this.fileurlDataGridViewTextBoxColumn.HeaderText = "file_url";
+            this.fileurlDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.fileurlDataGridViewTextBoxColumn.Name = "fileurlDataGridViewTextBoxColumn";
+            this.fileurlDataGridViewTextBoxColumn.ReadOnly = true;
+            this.fileurlDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // waktusubmitDataGridViewTextBoxColumn
+            // 
+            this.waktusubmitDataGridViewTextBoxColumn.DataPropertyName = "waktu_submit";
+            this.waktusubmitDataGridViewTextBoxColumn.HeaderText = "waktu_submit";
+            this.waktusubmitDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.waktusubmitDataGridViewTextBoxColumn.Name = "waktusubmitDataGridViewTextBoxColumn";
+            this.waktusubmitDataGridViewTextBoxColumn.ReadOnly = true;
+            this.waktusubmitDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // nilaiDataGridViewTextBoxColumn
+            // 
+            this.nilaiDataGridViewTextBoxColumn.DataPropertyName = "nilai";
+            this.nilaiDataGridViewTextBoxColumn.HeaderText = "nilai";
+            this.nilaiDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nilaiDataGridViewTextBoxColumn.Name = "nilaiDataGridViewTextBoxColumn";
+            this.nilaiDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nilaiDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "status";
+            this.statusDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dosenidDataGridViewTextBoxColumn1
+            // 
+            this.dosenidDataGridViewTextBoxColumn1.DataPropertyName = "dosen_id";
+            this.dosenidDataGridViewTextBoxColumn1.HeaderText = "dosen_id";
+            this.dosenidDataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dosenidDataGridViewTextBoxColumn1.Name = "dosenidDataGridViewTextBoxColumn1";
+            this.dosenidDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dosenidDataGridViewTextBoxColumn1.Width = 125;
             // 
             // label6
             // 
@@ -599,7 +777,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(919, 485);
+            this.tabPage3.Size = new System.Drawing.Size(919, 465);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Kalender ";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -621,12 +799,29 @@
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 0;
             // 
+            // tugasTableAdapter
+            // 
+            this.tugasTableAdapter.ClearBeforeFill = true;
+            // 
+            // pengumpulanBindingSource
+            // 
+            this.pengumpulanBindingSource.DataMember = "pengumpulan";
+            this.pengumpulanBindingSource.DataSource = this.tugasDBDataSet;
+            // 
+            // pengumpulanTableAdapter
+            // 
+            this.pengumpulanTableAdapter.ClearBeforeFill = true;
+            // 
+            // v_MonitoringMahasiswaTableAdapter
+            // 
+            this.v_MonitoringMahasiswaTableAdapter.ClearBeforeFill = true;
+            // 
             // DosenDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.ClientSize = new System.Drawing.Size(927, 570);
+            this.ClientSize = new System.Drawing.Size(927, 550);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.panel1);
             this.Name = "DosenDashboardForm";
@@ -641,14 +836,19 @@
             this.bindingNavigator1.ResumeLayout(false);
             this.bindingNavigator1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTugas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tugasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tugasDBDataSet)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.vMonitoringMahasiswaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tugasDBDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMonitoring)).EndInit();
             this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pengumpulanBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -701,6 +901,27 @@
         private System.Windows.Forms.DateTimePicker dtpTanggal;
         private System.Windows.Forms.TextBox txtDeskripsi;
         private System.Windows.Forms.Label label5;
+        private TugasDBDataSet tugasDBDataSet;
+        private System.Windows.Forms.BindingSource tugasBindingSource;
+        private TugasDBDataSetTableAdapters.tugasTableAdapter tugasTableAdapter;
+        private System.Windows.Forms.BindingSource pengumpulanBindingSource;
+        private TugasDBDataSetTableAdapters.pengumpulanTableAdapter pengumpulanTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idtugasDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn judulDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deskripsiDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deadlineDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dosenidDataGridViewTextBoxColumn;
+        private TugasDBDataSet1 tugasDBDataSet1;
+        private System.Windows.Forms.BindingSource vMonitoringMahasiswaBindingSource;
+        private TugasDBDataSet1TableAdapters.v_MonitoringMahasiswaTableAdapter v_MonitoringMahasiswaTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idpengumpulanDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn namamahasiswaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn judultugasDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fileurlDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn waktusubmitDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nilaiDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dosenidDataGridViewTextBoxColumn1;
     }
 }
 

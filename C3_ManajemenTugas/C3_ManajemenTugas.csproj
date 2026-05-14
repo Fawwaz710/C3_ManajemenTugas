@@ -188,6 +188,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TugasDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TugasDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TugasDBDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TugasDBDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="TugasDBDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TugasDBDataSet2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="UserSession.cs" />
     <EmbeddedResource Include="DosenDashboardForm.resx">
       <DependentUpon>DosenDashboardForm.cs</DependentUpon>
@@ -211,6 +226,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -221,6 +237,39 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="TugasDBDataSet.xsc">
+      <DependentUpon>TugasDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TugasDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TugasDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TugasDBDataSet.xss">
+      <DependentUpon>TugasDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TugasDBDataSet1.xsc">
+      <DependentUpon>TugasDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="TugasDBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TugasDBDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TugasDBDataSet1.xss">
+      <DependentUpon>TugasDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="TugasDBDataSet2.xsc">
+      <DependentUpon>TugasDBDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="TugasDBDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TugasDBDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TugasDBDataSet2.xss">
+      <DependentUpon>TugasDBDataSet2.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\download.jpg" />

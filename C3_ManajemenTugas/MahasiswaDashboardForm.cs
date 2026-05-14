@@ -23,6 +23,8 @@ namespace C3_ManajemenTugas
 
         private void MahasiswaDashboardForm_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'tugasDBDataSet1.v_TugasLengkap' table. You can move, or remove it, as needed.
+            this.v_TugasLengkapTableAdapter.Fill(this.tugasDBDataSet1.v_TugasLengkap);
             // Menampilkan nama dari session login
             // Menggunakan try-catch agar jika label1 belum diganti namanya tidak crash
             try

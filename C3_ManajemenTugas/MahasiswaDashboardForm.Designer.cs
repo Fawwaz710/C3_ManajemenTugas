@@ -62,6 +62,15 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.tugasDBDataSet1 = new C3_ManajemenTugas.TugasDBDataSet1();
+            this.vTugasLengkapBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.v_TugasLengkapTableAdapter = new C3_ManajemenTugas.TugasDBDataSet1TableAdapters.v_TugasLengkapTableAdapter();
+            this.idtugasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.judulDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deskripsiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deadlineDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.namadosenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dosenidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTugasMhs)).BeginInit();
@@ -69,6 +78,8 @@
             this.bnMahasiswa.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tugasDBDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vTugasLengkapBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -136,7 +147,16 @@
             this.dgvTugasMhs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvTugasMhs.AutoGenerateColumns = false;
             this.dgvTugasMhs.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTugasMhs.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idtugasDataGridViewTextBoxColumn,
+            this.judulDataGridViewTextBoxColumn,
+            this.deskripsiDataGridViewTextBoxColumn,
+            this.deadlineDataGridViewTextBoxColumn,
+            this.namadosenDataGridViewTextBoxColumn,
+            this.dosenidDataGridViewTextBoxColumn});
+            this.dgvTugasMhs.DataSource = this.vTugasLengkapBindingSource;
             this.dgvTugasMhs.Location = new System.Drawing.Point(26, 92);
             this.dgvTugasMhs.Name = "dgvTugasMhs";
             this.dgvTugasMhs.RowHeadersWidth = 51;
@@ -148,6 +168,7 @@
             // bnMahasiswa
             // 
             this.bnMahasiswa.AddNewItem = this.bindingNavigatorAddNewItem;
+            this.bnMahasiswa.BindingSource = this.vTugasLengkapBindingSource;
             this.bnMahasiswa.CountItem = this.bindingNavigatorCountItem;
             this.bnMahasiswa.DeleteItem = this.bindingNavigatorDeleteItem;
             this.bnMahasiswa.Dock = System.Windows.Forms.DockStyle.None;
@@ -171,7 +192,7 @@
             this.bnMahasiswa.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.bnMahasiswa.Name = "bnMahasiswa";
             this.bnMahasiswa.PositionItem = this.bindingNavigatorPositionItem;
-            this.bnMahasiswa.Size = new System.Drawing.Size(302, 31);
+            this.bnMahasiswa.Size = new System.Drawing.Size(302, 27);
             this.bnMahasiswa.TabIndex = 3;
             this.bnMahasiswa.Text = "Navigasi Tugas";
             // 
@@ -181,7 +202,7 @@
             this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
             this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
             this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(29, 28);
+            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(29, 24);
             this.bindingNavigatorAddNewItem.Text = "Add new";
             // 
             // bindingNavigatorCountItem
@@ -274,7 +295,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(0, 299);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(422, 240);
+            this.groupBox2.Size = new System.Drawing.Size(422, 225);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Kirim Tugas";
@@ -297,7 +318,6 @@
             this.txtCari.Name = "txtCari";
             this.txtCari.Size = new System.Drawing.Size(204, 27);
             this.txtCari.TabIndex = 8;
-
             // 
             // label4
             // 
@@ -402,11 +422,73 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Status Progress";
             // 
+            // tugasDBDataSet1
+            // 
+            this.tugasDBDataSet1.DataSetName = "TugasDBDataSet1";
+            this.tugasDBDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // vTugasLengkapBindingSource
+            // 
+            this.vTugasLengkapBindingSource.DataMember = "v_TugasLengkap";
+            this.vTugasLengkapBindingSource.DataSource = this.tugasDBDataSet1;
+            // 
+            // v_TugasLengkapTableAdapter
+            // 
+            this.v_TugasLengkapTableAdapter.ClearBeforeFill = true;
+            // 
+            // idtugasDataGridViewTextBoxColumn
+            // 
+            this.idtugasDataGridViewTextBoxColumn.DataPropertyName = "id_tugas";
+            this.idtugasDataGridViewTextBoxColumn.HeaderText = "id_tugas";
+            this.idtugasDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idtugasDataGridViewTextBoxColumn.Name = "idtugasDataGridViewTextBoxColumn";
+            this.idtugasDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // judulDataGridViewTextBoxColumn
+            // 
+            this.judulDataGridViewTextBoxColumn.DataPropertyName = "judul";
+            this.judulDataGridViewTextBoxColumn.HeaderText = "judul";
+            this.judulDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.judulDataGridViewTextBoxColumn.Name = "judulDataGridViewTextBoxColumn";
+            this.judulDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // deskripsiDataGridViewTextBoxColumn
+            // 
+            this.deskripsiDataGridViewTextBoxColumn.DataPropertyName = "deskripsi";
+            this.deskripsiDataGridViewTextBoxColumn.HeaderText = "deskripsi";
+            this.deskripsiDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.deskripsiDataGridViewTextBoxColumn.Name = "deskripsiDataGridViewTextBoxColumn";
+            this.deskripsiDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // deadlineDataGridViewTextBoxColumn
+            // 
+            this.deadlineDataGridViewTextBoxColumn.DataPropertyName = "deadline";
+            this.deadlineDataGridViewTextBoxColumn.HeaderText = "deadline";
+            this.deadlineDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.deadlineDataGridViewTextBoxColumn.Name = "deadlineDataGridViewTextBoxColumn";
+            this.deadlineDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // namadosenDataGridViewTextBoxColumn
+            // 
+            this.namadosenDataGridViewTextBoxColumn.DataPropertyName = "nama_dosen";
+            this.namadosenDataGridViewTextBoxColumn.HeaderText = "nama_dosen";
+            this.namadosenDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.namadosenDataGridViewTextBoxColumn.Name = "namadosenDataGridViewTextBoxColumn";
+            this.namadosenDataGridViewTextBoxColumn.Width = 125;
+            // 
+            // dosenidDataGridViewTextBoxColumn
+            // 
+            this.dosenidDataGridViewTextBoxColumn.DataPropertyName = "dosen_id";
+            this.dosenidDataGridViewTextBoxColumn.HeaderText = "dosen_id";
+            this.dosenidDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.dosenidDataGridViewTextBoxColumn.Name = "dosenidDataGridViewTextBoxColumn";
+            this.dosenidDataGridViewTextBoxColumn.Width = 125;
+            // 
             // MahasiswaDashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(952, 601);
+            this.ClientSize = new System.Drawing.Size(952, 529);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -426,6 +508,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tugasDBDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vTugasLengkapBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -464,5 +548,14 @@
         private System.Windows.Forms.Button btnCari;
         private System.Windows.Forms.TextBox txtCari;
         private System.Windows.Forms.Label label4;
+        private TugasDBDataSet1 tugasDBDataSet1;
+        private System.Windows.Forms.BindingSource vTugasLengkapBindingSource;
+        private TugasDBDataSet1TableAdapters.v_TugasLengkapTableAdapter v_TugasLengkapTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idtugasDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn judulDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deskripsiDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn deadlineDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn namadosenDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dosenidDataGridViewTextBoxColumn;
     }
 }

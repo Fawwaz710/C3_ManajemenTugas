@@ -98,7 +98,10 @@ namespace C3_ManajemenTugas
                 return;
             }
 
-            int idTugas = Convert.ToInt32(dgvTugasMhs.CurrentRow.Cells["id_tugas"].Value);
+            // Mengambil ID langsung dari sumber data (BindingSource) 
+            // yang saat ini sedang dipilih di tabel
+            DataRowView barisSekarang = (DataRowView)vTugasLengkapBindingSource.Current;
+            int idTugas = Convert.ToInt32(barisSekarang["id_tugas"]);
 
             try
             {

@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.txtNama = new System.Windows.Forms.TextBox();
+            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tugasDBDataSet = new C3_ManajemenTugas.TugasDBDataSet();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.cmbRole = new System.Windows.Forms.ComboBox();
@@ -39,24 +41,30 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.tugasDBDataSet = new C3_ManajemenTugas.TugasDBDataSet();
-            this.usersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.usersTableAdapter = new C3_ManajemenTugas.TugasDBDataSetTableAdapters.usersTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.tugasDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tugasDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNama
             // 
-            this.txtNama.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "nama", true));
             this.txtNama.Location = new System.Drawing.Point(33, 80);
             this.txtNama.Name = "txtNama";
             this.txtNama.Size = new System.Drawing.Size(360, 22);
             this.txtNama.TabIndex = 0;
             // 
+            // usersBindingSource
+            // 
+            this.usersBindingSource.DataMember = "users";
+            this.usersBindingSource.DataSource = this.tugasDBDataSet;
+            // 
+            // tugasDBDataSet
+            // 
+            this.tugasDBDataSet.DataSetName = "TugasDBDataSet";
+            this.tugasDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // txtEmail
             // 
-            this.txtEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "email", true));
             this.txtEmail.Location = new System.Drawing.Point(33, 133);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(360, 22);
@@ -64,7 +72,6 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "password", true));
             this.txtPassword.Location = new System.Drawing.Point(33, 197);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(360, 22);
@@ -142,16 +149,6 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Pilih Role";
             // 
-            // tugasDBDataSet
-            // 
-            this.tugasDBDataSet.DataSetName = "TugasDBDataSet";
-            this.tugasDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // usersBindingSource
-            // 
-            this.usersBindingSource.DataMember = "users";
-            this.usersBindingSource.DataSource = this.tugasDBDataSet;
-            // 
             // usersTableAdapter
             // 
             this.usersTableAdapter.ClearBeforeFill = true;
@@ -174,8 +171,8 @@
             this.Name = "RegisterForm";
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.RegisterForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.tugasDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.usersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tugasDBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

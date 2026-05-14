@@ -64,7 +64,6 @@
             // 
             // txtNama
             // 
-            this.txtNama.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "nama", true));
             this.txtNama.Location = new System.Drawing.Point(119, 211);
             this.txtNama.Name = "txtNama";
             this.txtNama.Size = new System.Drawing.Size(331, 22);
@@ -82,7 +81,6 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.usersBindingSource, "password", true));
             this.txtPassword.Location = new System.Drawing.Point(119, 303);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(331, 22);

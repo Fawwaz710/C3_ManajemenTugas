@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace C3_ManajemenTugas
 {
     public partial class LoginForm : Form
     {
+        // Panggil class koneksi
         Koneksi kon = new Koneksi();
 
         public LoginForm()
@@ -22,59 +17,68 @@ namespace C3_ManajemenTugas
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            // Validasi input kosong
+            if (string.IsNullOrEmpty(txtNama.Text) || string.IsNullOrEmpty(txtPassword.Text))
+            {
+                MessageBox.Show("Nama dan Password harus diisi!");
+                return;
+            }
+
             try
             {
                 using (SqlConnection conn = kon.GetConn())
                 {
                     conn.Open();
-                    // KRITERIA UJIAN: SQL INJECTION (Sengaja menggunakan string concatenation)
-                    // Masukkan ' OR '1'='1 pada password untuk mendemokan bypass
-                    string query = "SELECT * FROM users WHERE nama = @nama AND password = @password";
+
+                    // KRITERIA UJIAN 3: DEMO SQL INJECTION
+                    // Kode ini sengaja menggunakan penggabungan string (+) agar bisa didemokan saat ujian.
+                    // Skenario: Masukkan ' OR '1'='1 pada kolom password untuk bypass.
+                    string query = "SELECT * FROM users WHERE nama = '" + txtNama.Text + "' AND password = '" + txtPassword.Text + "'";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@nama", txtNama.Text);
-                    cmd.Parameters.AddWithValue("@password", txtPassword.Text);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     if (reader.Read())
                     {
-                        // Simpan data user ke session
+                        // 1. Simpan data user ke class UserSession agar dashboard tahu siapa yang masuk
                         UserSession.UserId = Convert.ToInt32(reader["user_id"]);
                         UserSession.Nama = reader["nama"].ToString();
                         UserSession.Role = reader["role"].ToString();
 
-                        MessageBox.Show("Selamat Datang, " + UserSession.Nama);
+                        MessageBox.Show("Login Berhasil! Selamat Datang " + UserSession.Nama, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                        // Pindah halaman sesuai ROLE
-                        if (UserSession.Role == "dosen")
+                        // 2. Arahkan ke Halaman yang sesuai berdasarkan ROLE
+                        if (UserSession.Role.ToLower() == "dosen")
                         {
                             DosenDashboardForm dosen = new DosenDashboardForm();
                             dosen.Show();
                         }
-                        else
+                        else if (UserSession.Role.ToLower() == "mahasiswa")
                         {
                             MahasiswaDashboardForm mhs = new MahasiswaDashboardForm();
                             mhs.Show();
                         }
+
+                        // 3. Sembunyikan form login
                         this.Hide();
                     }
                     else
                     {
-                        MessageBox.Show("Username atau Password Salah!");
+                        MessageBox.Show("Username atau Password salah!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                MessageBox.Show("Koneksi Error: " + ex.Message);
             }
         }
-        private void label1_Click(object sender, EventArgs e) { }
-        private void LoginForm_Load(object sender, EventArgs e) { }
-        private void txtPassword_TextChanged(object sender, EventArgs e) { }
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) { }
-        private void label4_Click(object sender, EventArgs e) { }
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // Pindah ke halaman Register
+            RegisterForm reg = new RegisterForm();
+            reg.Show();
+            this.Hide();
+        }
     }
-
 }
-

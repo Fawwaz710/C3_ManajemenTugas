@@ -47,7 +47,6 @@
             this.label1.Size = new System.Drawing.Size(155, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Silahkan Login";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -71,7 +70,6 @@
             this.txtPassword.Size = new System.Drawing.Size(331, 22);
             this.txtPassword.TabIndex = 3;
             this.txtPassword.UseSystemPasswordChar = true;
-            this.txtPassword.TextChanged += new System.EventHandler(this.txtPassword_TextChanged);
             // 
             // btnLogin
             // 
@@ -117,7 +115,6 @@
             this.label4.Size = new System.Drawing.Size(83, 18);
             this.label4.TabIndex = 7;
             this.label4.Text = "Kata Sandi:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // LoginForm
             // 
@@ -134,7 +131,6 @@
             this.Controls.Add(this.label1);
             this.Name = "LoginForm";
             this.Text = "LoginForm";
-            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

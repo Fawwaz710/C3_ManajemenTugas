@@ -16,7 +16,10 @@ namespace C3_ManajemenTugas
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DosenDashboardForm());
+
+            // UBAH BARIS INI: 
+            // Dari DosenDashboardForm() menjadi LoginForm()
+            Application.Run(new LoginForm());
         }
     }
 }

@@ -64,6 +64,6 @@ Proyek ini menyertakan simulasi serangan SQL Injection untuk tujuan edukasi:
 6. Build dan Run (F5).
 
 ## 👤 Disusun Oleh
-- **Nama**: [Nama Anda]
-- **NIM**: [NIM Anda]
+- **Nama**: [Muhammad Fawwaz Naufal Dzulfikar]
+- **NIM**: [20240140122]
 - **Mata Kuliah**: Pengembangan Aplikasi Basis Data
